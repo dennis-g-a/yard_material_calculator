@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Special Order Calculator</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  </head>
+  <body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-8 col-sm-12 p-2 rounded mt-3">
+                <div style="display: flex;justify-content: space-between;align-items: center;">
+                    <h3 class="mb-3">Special Order Calculator</h3>
+                    <button type="button" class="btn btn-secondary btn-sm" id="clearBtn">Clear Fields</button>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Cost: $</span>
+                    <div class="form-control" id="costInput"></div>
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon3">Retail: $</span>
+                    <div class="form-control" id="retailInput"></div>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-text" id="basic-addon3">Discount: $</span>
+                    <div class="form-control" id="discountInput"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-5 rounded mt-3">
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="bfm-tab" data-bs-toggle="tab" data-bs-target="#bfm-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">MBF/MSF</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="misc-tab" data-bs-toggle="tab" data-bs-target="#misc-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Misc.</button>
+                    </li>
+                </ul>
+                <div class="tab-content mt-2" id="myTabContent">
+                    <div class="tab-pane fade show active" id="bfm-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+                        <div class="row my-2">
+                            <div class=" col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="bfm" id="radioLumber" checked>
+                                    <label class="form-check-label" for="radioLumber">Lumber</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="bfm" id="radioPlywood" >
+                                    <label class="form-check-label" for="radioPlywood">Plywood</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col">
+                                <label for="bfmHeight" class="form-label">Height</label>
+                                <input type="number" class="form-control" id="bfmHeight" value="0">
+                            </div>
+                            <div class=" col">
+                                <label for="bfmWidth" class="form-label">Width</label>
+                                <input type="number" class="form-control" id="bfmWidth" value="0">
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col">
+                                <label for="bfmLength" class="form-label">Length</label>
+                                <input type="number" class="form-control" id="bfmLength" value="0">
+                            </div>
+                            <div class="col">
+                                <label for="bfmPrice" class="form-label">Cost per 1000</label>
+                                <input type="number" class="form-control" id="bfmPrice" value="0">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="bfmRetail" class="form-label">Retail Markup</label>
+                                <input type="number" class="form-control" id="bfmRetail" value="1.50" step=".01">
+                            </div>
+                            <div class=" col">
+                                <label for="bfmDiscount" class="form-label">Discount Markup</label>
+                                <input type="number" class="form-control" id="bfmDiscount" value="1.35" step=".01">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 ms-auto">
+                                <button type="button" class="btn btn-secondary" id="bfmCalculate">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="misc-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+                        <div class="row my-2">
+                            <div class=" col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="misc" id="radioLF" checked>
+                                    <label class="form-check-label" for="radioLF">lumber</label>
+                                </div>
+                            </div>
+                            <div class="col">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="misc" id="radioPiece" >
+                                    <label class="form-check-label" for="radioPiece">Unit/Item</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row ">
+                            <div class="col">
+                                <label for="miscCost" class="form-label">Cost</label>
+                                <input type="number" class="form-control" id="miscCost" value="0">
+                            </div>
+                            <div class=" col">
+                                <label for="miscLength" class="form-label">Length</label>
+                                <input type="number" class="form-control" id="miscLength" value="0">
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="miscRetail" class="form-label">Retail Markup</label>
+                                <input type="number" class="form-control" id="miscRetail" value="1.50" step=".01">
+                            </div>
+                            <div class=" col">
+                                <label for="miscDiscount" class="form-label">Discount Markup</label>
+                                <input type="number" class="form-control" id="miscDiscount" value="1.35" step=".01">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-3 ms-auto">
+                                <button type="button" class="btn btn-secondary" id="miscCalculate">Calculate</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script>
+        const clearBtn = document.querySelector("#clearBtn");
+        const costInput = document.querySelector("#costInput");
+        const retailInput = document.querySelector("#retailInput");
+        const discountInput = document.querySelector("#discountInput");
+        const radioLumber = document.querySelector("#radioLumber");
+        const radioPlywood = document.querySelector("#radioPlywood");
+        const bfmHeight = document.querySelector("#bfmHeight");
+        const bfmWidth = document.querySelector("#bfmWidth");
+        const bfmLength = document.querySelector("#bfmLength");
+        const bfmPrice = document.querySelector("#bfmPrice");
+        const bfmRetail = document.querySelector("#bfmRetail");
+        const bfmDiscount = document.querySelector("#bfmDiscount");
+        const bfmCalculate = document.querySelector("#bfmCalculate");
+        const radioLF = document.querySelector("#radioLF");
+        const radioPiece = document.querySelector("#radioPiece");
+        const miscCost = document.querySelector("#miscCost");
+        const miscLength = document.querySelector("#miscLength");
+        const miscRetail = document.querySelector("#miscRetail");
+        const miscDiscount = document.querySelector("#miscDiscount");
+        const miscCalculate = document.querySelector("#miscCalculate")
+
+        clearBtn.addEventListener("click", ()=>{
+            costInput.innerHTML = '';
+            retailInput.innerHTML = '';
+            discountInput.innerHTML = '';
+
+            bfmHeight.value = 0;
+            bfmWidth.value = 0;
+            bfmLength.value = 0;
+            bfmPrice.value = 0;
+
+            miscCost.value = 0;
+            miscLength.value = 0;
+        })
+
+
+        bfmCalculate.addEventListener("click", ()=>{
+            costInput.innerHTML = '';
+            retailInput.innerHTML = '';
+            discountInput.innerHTML = '';
+
+            const h = Number(bfmHeight.value)
+            const w = Number(bfmWidth.value)
+            const l = Number(bfmLength.value)
+            const bfm = Number(bfmPrice.value)
+            const r = Number(bfmRetail.value)
+            const d = Number(bfmDiscount.value)
+
+            if(radioLumber.checked){
+                const lfc = ((w*h)/12) * (bfm/1000)
+                const lfr = lfc * r
+                const lfd = lfc * d
+
+                let cs = `$${lfc.toFixed(3)} L/F `
+                let rs = `$${lfr.toFixed(3)} L/F `
+                let ds = `$${lfd.toFixed(3)} L/F `
+
+                if(l > 0){
+                    const pc = lfc * l
+                    const pr = lfr * l
+                    const pd = lfd * l 
+
+                    cs += `- $${pc.toFixed(3)} PC`
+                    rs += `- $${pr.toFixed(3)} PC`
+                    ds += `- $${pd.toFixed(3)} PC`
+                }
+
+                const cSpan = document.createElement("span")
+                costInput.append(cSpan, cs)
+
+                const rSpan = document.createElement("span")
+                retailInput.append(rSpan, rs)
+
+                const dSpan = document.createElement("span")
+                discountInput.append(dSpan, ds)
+
+            }
+
+            if(radioPlywood.checked){
+                bfmLength.value = 0;
+
+                const lfc = (w*h) * (bfm/1000)
+                const lfr = lfc * r
+                const lfd = lfc * d
+
+                let cs = `$${lfc.toFixed(3)} L/F `
+                let rs = `$${lfr.toFixed(3)} L/F `
+                let ds = `$${lfd.toFixed(3)} L/F `
+
+                const cSpan = document.createElement("span")
+                costInput.append(cSpan, cs)
+
+                const rSpan = document.createElement("span")
+                retailInput.append(rSpan, rs)
+
+                const dSpan = document.createElement("span")
+                discountInput.append(dSpan, ds)
+
+            }
+        })
+
+
+        miscCalculate.addEventListener("click", ()=>{
+            costInput.innerHTML = '';
+            retailInput.innerHTML = '';
+            discountInput.innerHTML = '';
+
+            const l = Number(miscLength.value)
+            const lf = Number(miscCost.value)
+            const r = Number(miscRetail.value)
+            const d = Number(miscDiscount.value)
+
+            if(radioLF.checked){
+                
+                const lfr = lf * r
+                const lfd = lf * d
+
+                let cs = `$${lf.toFixed(3)} L/F `
+                let rs = `$${lfr.toFixed(3)} L/F `
+                let ds = `$${lfd.toFixed(3)} L/F `
+
+                if(l > 0){
+                    const pc = lf * l
+                    const pr = lfr * l
+                    const pd = lfd * l 
+
+                    cs += `- $${pc.toFixed(3)} PC`
+                    rs += `- $${pr.toFixed(3)} PC`
+                    ds += `- $${pd.toFixed(3)} PC`
+                }
+
+                const cSpan = document.createElement("span")
+                costInput.append(cSpan, cs)
+
+                const rSpan = document.createElement("span")
+                retailInput.append(rSpan, rs)
+
+                const dSpan = document.createElement("span")
+                discountInput.append(dSpan, ds)
+
+            }
+
+            if(radioPiece.checked){
+                miscLength.value = 0;
+                
+                const lfr = lf * r
+                const lfd = lf * d
+
+                let cs = `$${lf.toFixed(3)} PC `
+                let rs = `$${lfr.toFixed(3)} PC `
+                let ds = `$${lfd.toFixed(3)} PC `
+
+                const cSpan = document.createElement("span")
+                costInput.append(cSpan, cs)
+
+                const rSpan = document.createElement("span")
+                retailInput.append(rSpan, rs)
+
+                const dSpan = document.createElement("span")
+                discountInput.append(dSpan, ds)
+
+            }
+        })
+
+    </script>
+  </body>
+</html>
