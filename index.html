@@ -59,21 +59,21 @@
                         <div class="row ">
                             <div class="col">
                                 <label for="bfmHeight" class="form-label">Height</label>
-                                <input type="number" class="form-control" id="bfmHeight" value="0">
+                                <input type="number" class="form-control" id="bfmHeight" placeholder="0">
                             </div>
                             <div class=" col">
                                 <label for="bfmWidth" class="form-label">Width</label>
-                                <input type="number" class="form-control" id="bfmWidth" value="0">
+                                <input type="number" class="form-control" id="bfmWidth" placeholder="0">
                             </div>
                         </div>
                         <div class="row ">
                             <div class="col">
                                 <label for="bfmLength" class="form-label">Length</label>
-                                <input type="number" class="form-control" id="bfmLength" value="0">
+                                <input type="number" class="form-control" id="bfmLength" placeholder="0">
                             </div>
                             <div class="col">
                                 <label for="bfmPrice" class="form-label">Cost per 1000</label>
-                                <input type="number" class="form-control" id="bfmPrice" value="0">
+                                <input type="number" class="form-control" id="bfmPrice" placeholder="0">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -110,11 +110,11 @@
                         <div class="row ">
                             <div class="col">
                                 <label for="miscCost" class="form-label">Cost</label>
-                                <input type="number" class="form-control" id="miscCost" value="0">
+                                <input type="number" class="form-control" id="miscCost" placeholder="0">
                             </div>
                             <div class=" col">
                                 <label for="miscLength" class="form-label">Length</label>
-                                <input type="number" class="form-control" id="miscLength" value="0">
+                                <input type="number" class="form-control" id="miscLength" placeholder="0">
                             </div>
                         </div>
                         <div class="row mb-3">
@@ -165,13 +165,13 @@
             retailInput.innerHTML = '';
             discountInput.innerHTML = '';
 
-            bfmHeight.value = 0;
-            bfmWidth.value = 0;
-            bfmLength.value = 0;
-            bfmPrice.value = 0;
+            bfmHeight.value = '';
+            bfmWidth.value = '';
+            bfmLength.value = '';
+            bfmPrice.value = '';
 
-            miscCost.value = 0;
-            miscLength.value = 0;
+            miscCost.value = '';
+            miscLength.value = '';
         })
 
 
@@ -218,7 +218,7 @@
             }
 
             if(radioPlywood.checked){
-                bfmLength.value = 0;
+                bfmLength.value = '';
 
                 const lfc = (w*h) * (bfm/1000)
                 const lfr = lfc * r
@@ -282,7 +282,7 @@
             }
 
             if(radioPiece.checked){
-                miscLength.value = 0;
+                miscLength.value = '';
                 
                 const lfr = lf * r
                 const lfd = lf * d
