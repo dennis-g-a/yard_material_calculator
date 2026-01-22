@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="row justify-content-center">
-            <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-5 rounded mt-3">
+            <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-sm-5 rounded mt-3">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="bfm-tab" data-bs-toggle="tab" data-bs-target="#bfm-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">MBF/MSF</button>
@@ -42,7 +42,7 @@
                 </ul>
                 <div class="tab-content mt-2" id="myTabContent">
                     <div class="tab-pane fade show active" id="bfm-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-                        <div class="row my-2">
+                        <div class="row my-3">
                             <div class=" col">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="bfm" id="radioLumber" checked>
@@ -56,44 +56,38 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col">
+                        <div class="row insertInput">
+                            <div class="col-6">
                                 <label for="bfmHeight" class="form-label">Height</label>
                                 <input type="number" class="form-control" id="bfmHeight" placeholder="0">
                             </div>
-                            <div class=" col">
+                            <div class=" col-6">
                                 <label for="bfmWidth" class="form-label">Width</label>
                                 <input type="number" class="form-control" id="bfmWidth" placeholder="0">
                             </div>
-                        </div>
-                        <div class="row ">
-                            <div class="col">
+                            <div class="col-6">
                                 <label for="bfmLength" class="form-label">Length</label>
                                 <input type="number" class="form-control" id="bfmLength" placeholder="0">
                             </div>
-                            <div class="col">
+                            <div class="col-6">
                                 <label for="bfmPrice" class="form-label">Cost per 1000</label>
                                 <input type="number" class="form-control" id="bfmPrice" placeholder="0">
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
+                            <div class="col-6">
                                 <label for="bfmRetail" class="form-label">Retail Markup</label>
                                 <input type="number" class="form-control" id="bfmRetail" value="1.50" step=".01">
                             </div>
-                            <div class=" col">
+                            <div class=" col-6">
                                 <label for="bfmDiscount" class="form-label">Discount Markup</label>
                                 <input type="number" class="form-control" id="bfmDiscount" value="1.35" step=".01">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3 ms-auto">
-                                <button type="button" class="btn btn-secondary" id="bfmCalculate">Calculate</button>
+                            <div class=" col-12 mt-3">
+                                <button type="button" class="btn btn-secondary btn-sm" style="width: 100%;" id="bfmCalculate">Calculate</button>
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane fade" id="misc-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-                        <div class="row my-2">
+                        <div class="row my-3">
                             <div class=" col">
                                 <div class="form-check">
                                     <input class="form-check-input" type="radio" name="misc" id="radioLF" checked>
@@ -107,29 +101,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row ">
-                            <div class="col">
+                        <div class="row insertInput">
+                            <div class="col-6">
                                 <label for="miscCost" class="form-label">Cost</label>
                                 <input type="number" class="form-control" id="miscCost" placeholder="0">
                             </div>
-                            <div class=" col">
+                            <div class=" col-6">
                                 <label for="miscLength" class="form-label">Length</label>
                                 <input type="number" class="form-control" id="miscLength" placeholder="0">
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <div class="col">
+                            <div class="col-6">
                                 <label for="miscRetail" class="form-label">Retail Markup</label>
                                 <input type="number" class="form-control" id="miscRetail" value="1.50" step=".01">
                             </div>
-                            <div class=" col">
+                            <div class=" col-6">
                                 <label for="miscDiscount" class="form-label">Discount Markup</label>
                                 <input type="number" class="form-control" id="miscDiscount" value="1.35" step=".01">
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-3 ms-auto">
-                                <button type="button" class="btn btn-secondary" id="miscCalculate">Calculate</button>
+                            <div class=" col-12 mt-3">
+                                <button type="button" class="btn btn-secondary btn-sm" style="width: 100%;" id="miscCalculate">Calculate</button>
                             </div>
                         </div>
                     </div>
@@ -139,26 +129,30 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <script>
+
         const clearBtn = document.querySelector("#clearBtn");
+
         const costInput = document.querySelector("#costInput");
         const retailInput = document.querySelector("#retailInput");
         const discountInput = document.querySelector("#discountInput");
-        const radioLumber = document.querySelector("#radioLumber");
-        const radioPlywood = document.querySelector("#radioPlywood");
+        
         const bfmHeight = document.querySelector("#bfmHeight");
         const bfmWidth = document.querySelector("#bfmWidth");
         const bfmLength = document.querySelector("#bfmLength");
         const bfmPrice = document.querySelector("#bfmPrice");
         const bfmRetail = document.querySelector("#bfmRetail");
         const bfmDiscount = document.querySelector("#bfmDiscount");
-        const bfmCalculate = document.querySelector("#bfmCalculate");
-        const radioLF = document.querySelector("#radioLF");
-        const radioPiece = document.querySelector("#radioPiece");
+        
         const miscCost = document.querySelector("#miscCost");
         const miscLength = document.querySelector("#miscLength");
         const miscRetail = document.querySelector("#miscRetail");
         const miscDiscount = document.querySelector("#miscDiscount");
-        const miscCalculate = document.querySelector("#miscCalculate")
+
+        const radioLumber = document.querySelector("#radioLumber");
+        const radioPlywood = document.querySelector("#radioPlywood");
+        const radioLF = document.querySelector("#radioLF");
+        const radioPiece = document.querySelector("#radioPiece");
+
 
         clearBtn.addEventListener("click", ()=>{
             costInput.innerHTML = '';
@@ -174,6 +168,23 @@
             miscLength.value = '';
         })
 
+        radioLumber.addEventListener("change", ()=>{
+            bfmHeight.disabled = false
+        })
+
+        radioPlywood.addEventListener("change", ()=>{
+            bfmHeight.value = '';
+            bfmHeight.disabled = true
+        })
+
+        radioLF.addEventListener("change", ()=>{
+            miscLength.disabled = false
+        })
+
+        radioPiece.addEventListener("change", ()=>{
+            miscLength.value = '';
+            miscLength.disabled = true
+        })
 
         bfmCalculate.addEventListener("click", ()=>{
             costInput.innerHTML = '';
@@ -218,9 +229,9 @@
             }
 
             if(radioPlywood.checked){
-                bfmLength.value = '';
+                
 
-                const lfc = (w*h) * (bfm/1000)
+                const lfc = (w*l) * (bfm/1000)
                 const lfr = lfc * r
                 const lfd = lfc * d
 
@@ -282,7 +293,7 @@
             }
 
             if(radioPiece.checked){
-                miscLength.value = '';
+                
                 
                 const lfr = lf * r
                 const lfd = lf * d
