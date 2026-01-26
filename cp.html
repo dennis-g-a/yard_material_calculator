@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Sheet Goods Calculator</title>
+    <title>Concrete Post Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -12,7 +12,7 @@
     <nav class="navbar bg-body-tertiary fixed-top">
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Sheet Goods Calculator</a>
+            <a class="navbar-brand" href="#">Concrete Post Calculator</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,16 +63,42 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center mt-5">
+        <div class="row justify-content-center mt-3">
             <div class="col-lg-5 col-md-8 col-sm-12 p-2 rounded mt-5">
                 <div id="pricingOutput">
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Cost</span>
-                        <div class="form-control" id="costInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Retail</span>
-                        <div class="form-control" id="retailInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Disc.</span>
-                        <div class="form-control" id="discountInput"></div>
+                    <span class="fw-semibold">Total Bags</span>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">50LB</span>
+                                <div class="form-control" id="lb50"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">60Lb</span>
+                                <div class="form-control" id="lb60"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">80Lb</span>
+                                <div class="form-control" id="lb80"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">90Lb</span>
+                                <div class="form-control" id="lb90"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <span class="fw-semibold">Total Volume</span>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">CU FT</span>
+                                <div class="form-control" id="cuft"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,24 +107,19 @@
             <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-sm-3 rounded mt-3">
                 <div class="row">
                     <div class="col-6">
-                        <label for="sheetSize" class="form-label">Sheet Size</label>
-                        <select class="form-select" aria-label="Default select example" id="sheetSize">
-                            <option value="8" selected>4X8</option>
-                            <option value="10">4X10</option>
-                            <option value="12">4X12</option>
-                        </select>
+                        <label for="inputPost" class="form-label">Post Diameter in Inches</label>
+                        <input type="number" class="form-control" id="inputPost" placeholder="0">
                     </div>
                     <div class="col-6">
-                        <label for="inputPrice" class="form-label">Cost Per 1000</label>
-                        <input type="number" class="form-control" id="inputPrice" placeholder="0">
+                        <label for="inputHole" class="form-label">Hole Diameter in Inches</label>
+                        <input type="number" class="form-control" id="inputHole" placeholder="0">
                     </div>
                     <div class="col-6">
-                        <label for="inputRetail" class="form-label">Retail Markup</label>
-                        <input type="number" class="form-control" id="inputRetail" value="1.50" step=".01">
+                        <label for="inputDepth" class="form-label">Depth in Inches</label>
+                        <input type="number" class="form-control" id="inputDepth" placeholder="0">
                     </div>
-                    <div class=" col-6">
-                        <label for="inputDiscount" class="form-label">Discount Markup</label>
-                        <input type="number" class="form-control" id="inputDiscount" value="1.35" step=".01">
+                    <div class="col-6">
+                        
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -118,48 +139,47 @@
         const btnClear = document.querySelector("#btnClear");
         const btnCalc = document.querySelector("#btnCalc");
 
-        const costInput = document.querySelector("#costInput");
-        const retailInput = document.querySelector("#retailInput");
-        const discountInput = document.querySelector("#discountInput");
+        const lb50 = document.querySelector("#lb50");
+        const lb60 = document.querySelector("#lb60");
+        const lb80 = document.querySelector("#lb80");
+        const lb90 = document.querySelector("#lb90");
+        const cuft = document.querySelector("#cuft");
+        const cuyd = document.querySelector("#cuyd");
         
-        const sheetSize = document.querySelector("#sheetSize");
-        const inputPrice = document.querySelector("#inputPrice");
-        const inputRetail = document.querySelector("#inputRetail");
-        const inputDiscount = document.querySelector("#inputDiscount");
+        const inputDepth = document.querySelector("#inputDepth");
+        const inputPost = document.querySelector("#inputPost");
+        const inputHole = document.querySelector("#inputHole");
 
 
         btnClear.addEventListener("click", ()=>{
-            costInput.innerHTML = '';
-            retailInput.innerHTML = '';
-            discountInput.innerHTML = '';
+            lb50.innerHTML = '';
+            lb60.innerHTML = '';
+            lb80.innerHTML = '';
+            lb90.innerHTML = '';
+            cuft.innerHTML = '';
 
-            sheetSize.selectedIndex = 0;
-            inputPrice.value = '';
+            inputDepth.value = '';
+            inputPost.value = '';
+            inputHole.value = '';
         })
 
         btnCalc.addEventListener("click", ()=>{
-            costInput.innerHTML = '';
-            retailInput.innerHTML = '';
-            discountInput.innerHTML = '';
+            lb50.innerHTML = '';
+            lb60.innerHTML = '';
+            lb80.innerHTML = '';
+            lb90.innerHTML = '';
+            cuft.innerHTML = '';
 
-            const s = Number(sheetSize.value)
-            const msf = Number(inputPrice.value)
-            const r = Number(inputRetail.value)
-            const d = Number(inputDiscount.value)
-
-            
-            const sc = (4*s) * (msf/1000)
-            const sr = sc * r
-            const sd = sc * d
-
-            let cs = `$${sc.toFixed(3)}`
-            let rs = `$${sr.toFixed(2)}`
-            let ds = `$${sd.toFixed(2)}`
+            const postArea = Math.PI * Math.pow(Number(inputPost.value), 2) / 4;
+            const holeArea = Math.PI * Math.pow(Number(inputHole.value), 2) / 4;
+            const cft = (((holeArea - postArea) * Number(inputDepth.value)) / Math.pow(12,3));
 
             const nSpan = document.createElement("span")
-            costInput.append(nSpan, cs)
-            retailInput.append(nSpan, rs)
-            discountInput.append(nSpan, ds)
+            lb50.append(nSpan, Math.ceil(cft / 0.375))
+            lb60.append(nSpan, Math.ceil(cft / 0.45))
+            lb80.append(nSpan, Math.ceil(cft / 0.60))
+            lb90.append(nSpan, Math.ceil(cft / 0.675))
+            cuft.append(nSpan, cft.toFixed(2))
 
         })
 

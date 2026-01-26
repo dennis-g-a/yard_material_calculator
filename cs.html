@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MBF Lumber Calculator</title>
+    <title>Concrete Slab Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -12,7 +12,7 @@
     <nav class="navbar bg-body-tertiary fixed-top">
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">MBF Lumber Calculator</a>
+            <a class="navbar-brand" href="#">Concrete Slab Calculator</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -63,29 +63,42 @@
     </nav>
 
     <div class="container">
-        <div class="row justify-content-center mt-2">
+        <div class="row justify-content-center mt-3">
             <div class="col-lg-5 col-md-8 col-sm-12 p-2 rounded mt-5">
                 <div id="pricingOutput">
-                    <span class="fw-semibold">Cost</span>
-                    <div class="input-group mb-3">
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">LF</span>
-                        <div class="form-control" id="lfcostInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
-                        <div class="form-control" id="pccostInput"></div>
+                    <span class="fw-semibold">Total Bags</span>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">50LB</span>
+                                <div class="form-control" id="lb50"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">60Lb</span>
+                                <div class="form-control" id="lb60"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">80Lb</span>
+                                <div class="form-control" id="lb80"></div>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-success text-bg-success" id="basic-addon3">90Lb</span>
+                                <div class="form-control" id="lb90"></div>
+                            </div>
+                        </div>
                     </div>
-                    <span class="fw-semibold">Retail</span>
+                    <span class="fw-semibold">Total Volume</span>
                     <div class="input-group mb-3">
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">LF</span>
-                        <div class="form-control" id="lfretailInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
-                        <div class="form-control" id="pcretailInput"></div>
-                    </div>
-                    <span class="fw-semibold">Discount</span>
-                    <div class="input-group">
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">LF</span>
-                        <div class="form-control" id="lfdiscountInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
-                        <div class="form-control" id="pcdiscountInput"></div>
+                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">CU FT</span>
+                        <div class="form-control" id="cuft"></div>
+                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">CU YD</span>
+                        <div class="form-control" id="cuyd"></div>
                     </div>
                 </div>
             </div>
@@ -94,28 +107,19 @@
             <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-sm-3 rounded mt-3">
                 <div class="row">
                     <div class="col-6">
-                        <label for="inputHeight" class="form-label">Height</label>
-                        <input type="number" class="form-control" id="inputHeight" placeholder="0">
-                    </div>
-                    <div class="col-6">
-                        <label for="inputWidth" class="form-label">Width</label>
+                        <label for="inputWidth" class="form-label">Width in Feet</label>
                         <input type="number" class="form-control" id="inputWidth" placeholder="0">
                     </div>
                     <div class="col-6">
-                        <label for="inputLength" class="form-label">Length</label>
+                        <label for="inputLength" class="form-label">Length in Feet</label>
                         <input type="number" class="form-control" id="inputLength" placeholder="0">
                     </div>
                     <div class="col-6">
-                        <label for="inputPrice" class="form-label">Cost Per 1000</label>
-                        <input type="number" class="form-control" id="inputPrice" placeholder="0">
+                        <label for="inputDepth" class="form-label">Depth in Inches</label>
+                        <input type="number" class="form-control" id="inputDepth" placeholder="0">
                     </div>
                     <div class="col-6">
-                        <label for="inputRetail" class="form-label">Retail Markup</label>
-                        <input type="number" class="form-control" id="inputRetail" value="1.50" step=".01">
-                    </div>
-                    <div class=" col-6">
-                        <label for="inputDiscount" class="form-label">Discount Markup</label>
-                        <input type="number" class="form-control" id="inputDiscount" value="1.35" step=".01">
+                        
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -135,79 +139,51 @@
         const btnClear = document.querySelector("#btnClear");
         const btnCalc = document.querySelector("#btnCalc");
 
-        const lfcostInput = document.querySelector("#lfcostInput");
-        const lfretailInput = document.querySelector("#lfretailInput");
-        const lfdiscountInput = document.querySelector("#lfdiscountInput");
-        const pccostInput = document.querySelector("#pccostInput");
-        const pcretailInput = document.querySelector("#pcretailInput");
-        const pcdiscountInput = document.querySelector("#pcdiscountInput");
+        const lb50 = document.querySelector("#lb50");
+        const lb60 = document.querySelector("#lb60");
+        const lb80 = document.querySelector("#lb80");
+        const lb90 = document.querySelector("#lb90");
+        const cuft = document.querySelector("#cuft");
+        const cuyd = document.querySelector("#cuyd");
         
-        const inputHeight = document.querySelector("#inputHeight");
+        const inputDepth = document.querySelector("#inputDepth");
         const inputWidth = document.querySelector("#inputWidth");
         const inputLength = document.querySelector("#inputLength");
-        const inputPrice = document.querySelector("#inputPrice");
-        const inputRetail = document.querySelector("#inputRetail");
-        const inputDiscount = document.querySelector("#inputDiscount");
 
 
         btnClear.addEventListener("click", ()=>{
-            lfcostInput.innerHTML = '';
-            pccostInput.innerHTML = '';
-            lfretailInput.innerHTML = '';
-            pcretailInput.innerHTML = '';
-            lfdiscountInput.innerHTML = '';
-            pcdiscountInput.innerHTML = '';
+            lb50.innerHTML = '';
+            lb60.innerHTML = '';
+            lb80.innerHTML = '';
+            lb90.innerHTML = '';
+            cuft.innerHTML = '';
+            cuyd.innerHTML = '';
 
-            inputHeight.value = '';
+            inputDepth.value = '';
             inputWidth.value = '';
             inputLength.value = '';
-            inputPrice.value = '';
         })
 
         btnCalc.addEventListener("click", ()=>{
-            lfcostInput.innerHTML = '';
-            pccostInput.innerHTML = '';
-            lfretailInput.innerHTML = '';
-            pcretailInput.innerHTML = '';
-            lfdiscountInput.innerHTML = '';
-            pcdiscountInput.innerHTML = '';
+            lb50.innerHTML = '';
+            lb60.innerHTML = '';
+            lb80.innerHTML = '';
+            lb90.innerHTML = '';
+            cuft.innerHTML = '';
+            cuyd.innerHTML = '';
 
-            const h = Number(inputHeight.value)
-            const w = Number(inputWidth.value)
-            const l = Number(inputLength.value)
-            const bfm = Number(inputPrice.value)
-            const r = Number(inputRetail.value)
-            const d = Number(inputDiscount.value)
-
-            
-            const lfc = ((w*h)/12) * (bfm/1000)
-            const lfr = lfc * r
-            const lfd = lfc * d
-
-            let lcs = `$${lfc.toFixed(3)}`
-            let lrs = `$${lfr.toFixed(2)}`
-            let lds = `$${lfd.toFixed(2)}`
-            let pcs = ``
-            let prs = ``
-            let pds = ``
-
-            if(l > 0){
-                const pc = lfc * l
-                const pr = lfr * l
-                const pd = lfd * l 
-
-                pcs = `$${pc.toFixed(3)}`
-                prs = `$${pr.toFixed(2)}`
-                pds = `$${pd.toFixed(2)}`
-            }
+            const d = Number(inputDepth.value) / 12
+            const sqft = Number(inputWidth.value) * Number(inputLength.value)
+            const cft = (sqft * d) + .10
+            const cyd = cft / 27
 
             const nSpan = document.createElement("span")
-            lfcostInput.append(nSpan, lcs)
-            pccostInput.append(nSpan, pcs)
-            lfretailInput.append(nSpan, lrs)
-            pcretailInput.append(nSpan, prs)
-            lfdiscountInput.append(nSpan, lds)
-            pcdiscountInput.append(nSpan, pds)
+            lb50.append(nSpan, Math.ceil(cft / 0.375))
+            lb60.append(nSpan, Math.ceil(cft / 0.45))
+            lb80.append(nSpan, Math.ceil(cft / 0.60))
+            lb90.append(nSpan, Math.ceil(cft / 0.675))
+            cuft.append(nSpan, cft.toFixed(2))
+            cuyd.append(nSpan, cyd.toFixed(2))
 
         })
 
