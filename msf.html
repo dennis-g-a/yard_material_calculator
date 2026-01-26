@@ -66,12 +66,23 @@
         <div class="row justify-content-center mt-5">
             <div class="col-lg-5 col-md-8 col-sm-12 p-2 rounded mt-5">
                 <div id="pricingOutput">
+                    <div class="row">
+                        <div class="col-4 fw-semibold">
+                            Cost
+                        </div>
+                        <div class="col-4 fw-semibold">
+                            Retail
+                        </div>
+                        <div class="col-4 fw-semibold">
+                            Discount
+                        </div>
+                    </div>
                     <div class="input-group mb-3">
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Cost</span>
+                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
                         <div class="form-control" id="costInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Retail</span>
+                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
                         <div class="form-control" id="retailInput"></div>
-                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">Disc.</span>
+                        <span class="input-group-text bg-success text-bg-success" id="basic-addon3">PC</span>
                         <div class="form-control" id="discountInput"></div>
                     </div>
                 </div>
@@ -156,10 +167,20 @@
             let rs = `$${sr.toFixed(2)}`
             let ds = `$${sd.toFixed(2)}`
 
-            const nSpan = document.createElement("span")
-            costInput.append(nSpan, cs)
-            retailInput.append(nSpan, rs)
-            discountInput.append(nSpan, ds)
+            let n1,n2,n3 = ''
+
+            const elarr = [
+                [n1,cs,costInput],
+                [n2,rs,retailInput],
+                [n3,ds,discountInput]
+            ]
+
+            for(const v of elarr){
+                v[0] = document.createElement('span');
+                v[0].classList.add("fw-semibold");
+                v[0].innerText = v[1],
+                v[2].append(v[0])
+            }
 
         })
 

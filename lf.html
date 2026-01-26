@@ -94,7 +94,7 @@
             <div class="col-lg-5 col-md-8 col-sm-12 bg-body-tertiary p-sm-3 rounded mt-3">
                 <div class="row">
                     <div class="col-6">
-                        <label for="inputPrice" class="form-label">Cost Per 1000</label>
+                        <label for="inputPrice" class="form-label">Price per Foot</label>
                         <input type="number" class="form-control" id="inputPrice" placeholder="0">
                     </div>
                     <div class="col-6">
@@ -187,13 +187,23 @@
                 pds = `$${pd.toFixed(2)}`
             }
 
-            const nSpan = document.createElement("span")
-            lfcostInput.append(nSpan, lcs)
-            pccostInput.append(nSpan, pcs)
-            lfretailInput.append(nSpan, lrs)
-            pcretailInput.append(nSpan, prs)
-            lfdiscountInput.append(nSpan, lds)
-            pcdiscountInput.append(nSpan, pds)
+            let slfc,slfr,spcc,spcr,slfd,spcd = ''
+
+            const elarr = [
+                [slfc,lcs,lfcostInput],
+                [spcc,pcs,pccostInput],
+                [slfr,lrs,lfretailInput],
+                [spcr,prs,pcretailInput],
+                [slfd,lds,lfdiscountInput],
+                [spcd,pds,pcdiscountInput]
+            ]
+
+            for(const v of elarr){
+                v[0] = document.createElement('span');
+                v[0].classList.add("fw-semibold");
+                v[0].innerText = v[1],
+                v[2].append(v[0])
+            }
 
         })
 

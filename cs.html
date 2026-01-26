@@ -42,7 +42,7 @@
                             <a class="btn btn-secondary btn-lg w-100" href="cs.html">Concrete Slab</a>
                         </li>
                         <li class="mb-2">
-                            <a class="btn btn-secondary btn-lg w-100" href="cp.html">Concrete Post</a>
+                            <a class="btn btn-secondary btn-lg w-100" href="cp.html">Concrete Post/Column</a>
                         </li>
                         <li class="mb-2">
                             <a class="btn btn-warning btn-lg w-100" href="gr.html">Gravel/Rock</a>
@@ -177,13 +177,23 @@
             const cft = (sqft * d) + .10
             const cyd = cft / 27
 
-            const nSpan = document.createElement("span")
-            lb50.append(nSpan, Math.ceil(cft / 0.375))
-            lb60.append(nSpan, Math.ceil(cft / 0.45))
-            lb80.append(nSpan, Math.ceil(cft / 0.60))
-            lb90.append(nSpan, Math.ceil(cft / 0.675))
-            cuft.append(nSpan, cft.toFixed(2))
-            cuyd.append(nSpan, cyd.toFixed(2))
+            let n1,n2,n3,n4,n5,n6 = ''
+
+            const elarr = [
+                [n1,Math.ceil(cft / 0.375),lb50],
+                [n2,Math.ceil(cft / 0.45),lb60],
+                [n3,Math.ceil(cft / 0.60),lb80],
+                [n4,Math.ceil(cft / 0.675),lb90],
+                [n5,cft.toFixed(2),cuft],
+                [n6,cyd.toFixed(2),cuyd]
+            ]
+
+            for(const v of elarr){
+                v[0] = document.createElement('span');
+                v[0].classList.add("fw-semibold");
+                v[0].innerText = v[1],
+                v[2].append(v[0])
+            }
 
         })
 

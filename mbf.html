@@ -149,8 +149,7 @@
         const inputRetail = document.querySelector("#inputRetail");
         const inputDiscount = document.querySelector("#inputDiscount");
 
-
-        btnClear.addEventListener("click", ()=>{
+        function clearInput(){
             lfcostInput.innerHTML = '';
             pccostInput.innerHTML = '';
             lfretailInput.innerHTML = '';
@@ -162,9 +161,9 @@
             inputWidth.value = '';
             inputLength.value = '';
             inputPrice.value = '';
-        })
+        }
 
-        btnCalc.addEventListener("click", ()=>{
+        function formCalc(){
             lfcostInput.innerHTML = '';
             pccostInput.innerHTML = '';
             lfretailInput.innerHTML = '';
@@ -200,16 +199,29 @@
                 prs = `$${pr.toFixed(2)}`
                 pds = `$${pd.toFixed(2)}`
             }
+            let slfc,slfr,spcc,spcr,slfd,spcd = ''
 
-            const nSpan = document.createElement("span")
-            lfcostInput.append(nSpan, lcs)
-            pccostInput.append(nSpan, pcs)
-            lfretailInput.append(nSpan, lrs)
-            pcretailInput.append(nSpan, prs)
-            lfdiscountInput.append(nSpan, lds)
-            pcdiscountInput.append(nSpan, pds)
+            const elarr = [
+                [slfc,lcs,lfcostInput],
+                [spcc,pcs,pccostInput],
+                [slfr,lrs,lfretailInput],
+                [spcr,prs,pcretailInput],
+                [slfd,lds,lfdiscountInput],
+                [spcd,pds,pcdiscountInput]
+            ]
 
-        })
+            for(const v of elarr){
+                v[0] = document.createElement('span');
+                v[0].classList.add("fw-semibold");
+                v[0].innerText = v[1],
+                v[2].append(v[0])
+            }
+        }
+
+
+        btnClear.addEventListener("click", clearInput)
+
+        btnCalc.addEventListener("click", formCalc)
 
 
     </script>

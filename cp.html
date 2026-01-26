@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Concrete Post Calculator</title>
+    <title>Concrete Post/Column Calculator</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 
@@ -12,7 +12,7 @@
     <nav class="navbar bg-body-tertiary fixed-top">
 
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Concrete Post Calculator</a>
+            <a class="navbar-brand" href="#">Concrete Post/Column Calculator</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,7 +42,7 @@
                             <a class="btn btn-secondary btn-lg w-100" href="cs.html">Concrete Slab</a>
                         </li>
                         <li class="mb-2">
-                            <a class="btn btn-secondary btn-lg w-100" href="cp.html">Concrete Post</a>
+                            <a class="btn btn-secondary btn-lg w-100" href="cp.html">Concrete Post/Column</a>
                         </li>
                         <li class="mb-2">
                             <a class="btn btn-warning btn-lg w-100" href="gr.html">Gravel/Rock</a>
@@ -119,7 +119,8 @@
                         <input type="number" class="form-control" id="inputDepth" placeholder="0">
                     </div>
                     <div class="col-6">
-                        
+                        <label for="inputCount" class="form-label">Hole Count</label>
+                        <input type="number" class="form-control" id="inputCount" placeholder="0">
                     </div>
                 </div>
                 <div class="row mt-3">
@@ -149,6 +150,7 @@
         const inputDepth = document.querySelector("#inputDepth");
         const inputPost = document.querySelector("#inputPost");
         const inputHole = document.querySelector("#inputHole");
+        const inputCount = document.querySelector("#inputCount");
 
 
         btnClear.addEventListener("click", ()=>{
@@ -161,6 +163,7 @@
             inputDepth.value = '';
             inputPost.value = '';
             inputHole.value = '';
+            inputCount.value = '';
         })
 
         btnCalc.addEventListener("click", ()=>{
@@ -170,9 +173,10 @@
             lb90.innerHTML = '';
             cuft.innerHTML = '';
 
-            const postArea = Math.PI * Math.pow(Number(inputPost.value), 2) / 4;
-            const holeArea = Math.PI * Math.pow(Number(inputHole.value), 2) / 4;
-            const cft = (((holeArea - postArea) * Number(inputDepth.value)) / Math.pow(12,3));
+            const postArea = (Math.PI * Math.pow((Number(inputPost.value) / 2), 2)) / 144
+            const holeArea = (Math.PI * Math.pow((Number(inputHole.value) / 2), 2)) / 144
+            const depthSize = Number(inputDepth.value) / 12
+            const cft = Number(inputCount.value) > 0? ((holeArea - postArea) * depthSize) * Number(inputCount.value) : (holeArea - postArea) * depthSize
 
             const nSpan = document.createElement("span")
             lb50.append(nSpan, Math.ceil(cft / 0.375))
